@@ -3,6 +3,16 @@ const global = {
   currentPage: window.location.pathname,
 }
 
+// Feth data from TMDB API
+const getData = async () => {
+  const res = await fetch(
+    'https://api.themoviedb.org/3/movie/popular?api_key=f2ea09585c04240200255b651d9f228b&language=en-US&page=1'
+  )
+  const data = await res.json()
+  console.log(data)
+}
+
+// Set active nav link 'is-active' class
 const setActiveLink = () => {
   const links = document.querySelectorAll('nav a')
   links.forEach((link) => {
@@ -35,6 +45,7 @@ function init() {
       break
   }
   setActiveLink()
+  getData()
 }
 
 document.addEventListener('DOMContentLoaded', init)
