@@ -3,15 +3,21 @@ const global = {
   currentPage: window.location.pathname,
 }
 
-// Feth data from TMDB API
-const getData = async (endpoint) => {
+// Fetch and display popular movies
+const displayPopularMovies = async () => {
+  const { results } = await fetchAPIData('movie/popular')
+  console.log(results)
+}
+
+// Fetch data from TMDB API
+const fetchAPIData = async (endpoint) => {
   const API_KEY = 'f2ea09585c04240200255b651d9f228b'
   const API_URL = 'https://api.themoviedb.org/3/'
   const res = await fetch(
     `${API_URL}${endpoint}?api_key=${API_KEY}&language=en-US`
   )
   const data = await res.json()
-  console.log(data)
+  return data
 }
 
 // Set active nav link 'is-active' class
@@ -47,7 +53,7 @@ function init() {
       break
   }
   setActiveLink()
-  getData()
+  displayPopularMovies()
 }
 
 document.addEventListener('DOMContentLoaded', init)
