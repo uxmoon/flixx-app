@@ -1,14 +1,23 @@
+// Add global state
 const global = {
   currentPage: window.location.pathname,
 }
-// Create a simple router
-console.log(global.currentPage)
+
+const setActiveLink = () => {
+  const links = document.querySelectorAll('nav a')
+  links.forEach((link) => {
+    if (link.getAttribute('href') === global.currentPage) {
+      link.classList.add('is-active')
+    }
+  })
+}
 
 function init() {
+  // Create a simple router
   switch (global.currentPage) {
     case '/':
     case '/index.html':
-      console.log('home page')
+      console.log('home page', window.location.pathname)
       break
     case '/movie-details.html':
       console.log('details: movie')
@@ -25,6 +34,7 @@ function init() {
     default:
       break
   }
+  setActiveLink()
 }
 
 document.addEventListener('DOMContentLoaded', init)
