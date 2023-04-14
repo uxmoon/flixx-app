@@ -18,6 +18,26 @@
     <title>Flixx App</title>
   </head>
   <body>
-    <h1>Flixx App</h1>
+    <header>
+      <h1><a href="index.html">Flixx App</a></h1>
+      <nav>
+        <a href="index.html">Movies</a>
+        <a href="shows.html">Shows</a>
+      </nav>
+    </header>
+    <main>
+      <form action="/search.html">
+        <div>
+          <input type="radio" name="type" id="movies" value="movie" checked>
+          <label for="movies">Movies</label>
+          <input type="radio" name="type" id="shows" value="tv">
+          <label for="shows">TV Shows</label>
+        </div>
+        <div>
+          <input type="text" id="s" placeholder="Enter search term">
+          <button type="submit">Search <i class="fas fa-search"></i></button>
+        </div>
+      </form>
+    </main>
   </body>
 </html>
