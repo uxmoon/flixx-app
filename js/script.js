@@ -4,9 +4,11 @@ const global = {
 }
 
 // Feth data from TMDB API
-const getData = async () => {
+const getData = async (endpoint) => {
+  const API_KEY = 'f2ea09585c04240200255b651d9f228b'
+  const API_URL = 'https://api.themoviedb.org/3/'
   const res = await fetch(
-    'https://api.themoviedb.org/3/movie/popular?api_key=f2ea09585c04240200255b651d9f228b&language=en-US&page=1'
+    `${API_URL}${endpoint}?api_key=${API_KEY}&language=en-US`
   )
   const data = await res.json()
   console.log(data)
