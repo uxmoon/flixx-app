@@ -9,10 +9,10 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap"
       rel="stylesheet"
-    />    
-    <link rel="stylesheet" href="lib/swiper.css">
-    <link rel="stylesheet" href="lib/fontawesome.css">
-    <link rel="stylesheet" href="css/style.css">
+    />
+    <link rel="stylesheet" href="lib/swiper.css" />
+    <link rel="stylesheet" href="lib/fontawesome.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <script src="lib/swiper.js"></script>
     <script src="js/script.js" defer></script>
     <title>Flixx App</title>
@@ -28,25 +28,25 @@
       </div>
     </header>
     <main>
-      <div class="container">
-
+      <section class="container">
         <form action="/search.html">
           <div>
-            <input type="radio" name="type" id="movies" value="movie" checked>
+            <input type="radio" name="type" id="movies" value="movie" checked />
             <label for="movies">Movies</label>
-            <input type="radio" name="type" id="shows" value="tv">
+            <input type="radio" name="type" id="shows" value="tv" />
             <label for="shows">TV Shows</label>
           </div>
           <div>
-            <input type="text" id="s" placeholder="Enter search term">
+            <input type="text" id="s" placeholder="Enter search term" />
             <button type="submit">Search <i class="fas fa-search"></i></button>
           </div>
         </form>
-        <section>
-          <h2>Popular Movies</h2>
-          <div id="popular-movies" class="auto-grid"></div>
-        </section>
-      </div>
+      </section>
+      <section class="container">
+        <h2>Popular Movies</h2>
+        <div id="popular-movies" class="auto-grid"></div>
+      </section>
     </main>
+    <div id="loading" class="spinner"></div>
   </body>
 </html>
