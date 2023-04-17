@@ -19,11 +19,20 @@
   </head>
   <body>
     <header>
-      <h1><a href="/">Flixx App</a></h1>
-      <nav>
-        <a href="/">Movies</a>
-        <a href="/shows.html">Shows</a>
-      </nav>
+      <div class="container">
+        <h1><a href="/">Flixx App</a></h1>
+        <nav>
+          <a href="/">Movies</a>
+          <a href="/shows.html">Shows</a>
+        </nav>
+      </div>
     </header>
+    <main>
+      <section class="container">
+        <h2>Popular TV shows</h2>
+        <div id="popular-shows" class="auto-grid"></div>
+      </section>
+    </main>
+    <div id="loading" class="spinner"></div>
   </body>
 </html>
