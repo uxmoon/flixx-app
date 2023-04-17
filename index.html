@@ -19,31 +19,34 @@
   </head>
   <body>
     <header>
-      <h1><a href="/">Flixx App</a></h1>
-      <nav>
-        <a href="/">Movies</a>
-        <a href="/shows.html">Shows</a>
-      </nav>
+      <div class="container">
+        <h1><a href="/">Flixx App</a></h1>
+        <nav>
+          <a href="/">Movies</a>
+          <a href="/shows.html">Shows</a>
+        </nav>
+      </div>
     </header>
     <main>
-      <form action="/search.html">
-        <div>
-          <input type="radio" name="type" id="movies" value="movie" checked>
-          <label for="movies">Movies</label>
-          <input type="radio" name="type" id="shows" value="tv">
-          <label for="shows">TV Shows</label>
-        </div>
-        <div>
-          <input type="text" id="s" placeholder="Enter search term">
-          <button type="submit">Search <i class="fas fa-search"></i></button>
-        </div>
-      </form>
-      <section>
-        <h2>Popular Movies</h2>
-        <div id="popular-movies">
-          
-        </div>
-      </section>
+      <div class="container">
+
+        <form action="/search.html">
+          <div>
+            <input type="radio" name="type" id="movies" value="movie" checked>
+            <label for="movies">Movies</label>
+            <input type="radio" name="type" id="shows" value="tv">
+            <label for="shows">TV Shows</label>
+          </div>
+          <div>
+            <input type="text" id="s" placeholder="Enter search term">
+            <button type="submit">Search <i class="fas fa-search"></i></button>
+          </div>
+        </form>
+        <section>
+          <h2>Popular Movies</h2>
+          <div id="popular-movies" class="auto-grid"></div>
+        </section>
+      </div>
     </main>
   </body>
 </html>
