@@ -73,6 +73,12 @@ select {
   }
 }
 
+header h1,
+header p {
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
 .container {
   max-width: 80rem;
   margin-inline: auto;
