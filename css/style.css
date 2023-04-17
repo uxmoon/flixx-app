@@ -133,3 +133,17 @@ select {
     -webkit-transform: rotate(360deg);
   }
 }
+
+.image-backdrop {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.1;
+  max-width: 100%;
+}
