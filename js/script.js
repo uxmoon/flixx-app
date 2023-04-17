@@ -54,9 +54,9 @@ const displayPopularShows = async () => {
 // Display movie details
 const displayMovieDetails = async () => {
   const movieId = window.location.search.slice(4)
-  console.log(movieId)
-
   const movie = await fetchAPIData(`movie/${movieId}`)
+
+  displayBackgroundImage('movie', movie.backdrop_path)
 
   const div = document.createElement('div')
   div.innerHTML = `
@@ -150,6 +150,18 @@ const showSpinner = () => {
 
 const hideSpinner = () => {
   document.querySelector('.spinner').classList.remove('show')
+}
+
+const displayBackgroundImage = (type, imagePath) => {
+  const divOverlay = document.createElement('div')
+  divOverlay.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${imagePath}
+  )`
+  divOverlay.classList.add('image-backdrop')
+  if (type === 'movie') {
+    document.querySelector('#movie-details').appendChild(divOverlay)
+  } else {
+    document.querySelector('#show-details').appendChild(divOverlay)
+  }
 }
 
 function init() {
