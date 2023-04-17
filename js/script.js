@@ -16,7 +16,7 @@ const displayPopularMovies = async () => {
         movie.poster_path
           ? `<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">`
           : `<img src="images/no-image.jpg" alt="${movie.title}">`
-      } 
+      }
       </a>
       <div class="card-body">
         <h3>${movie.title}</h3>
@@ -27,7 +27,7 @@ const displayPopularMovies = async () => {
   })
 }
 
-// Fetch and display popular movies
+// Fetch and display popular tv shows
 const displayPopularShows = async () => {
   const { results } = await fetchAPIData('tv/popular')
 
@@ -40,7 +40,7 @@ const displayPopularShows = async () => {
         show.poster_path
           ? `<img src="https://image.tmdb.org/t/p/w500${show.poster_path}" alt="${show.name}">`
           : `<img src="images/no-image.jpg" alt="${show.name}">`
-      } 
+      }
       </a>
       <div class="card-body">
         <h3>${show.name}</h3>
@@ -49,6 +49,74 @@ const displayPopularShows = async () => {
     `
     document.getElementById('popular-shows').appendChild(div)
   })
+}
+
+// Display movie details
+const displayMovieDetails = async () => {
+  const movieId = window.location.search.slice(4)
+  console.log(movieId)
+
+  const movie = await fetchAPIData(`movie/${movieId}`)
+
+  const div = document.createElement('div')
+  div.innerHTML = `
+    <div class="details-top">
+      <div>
+      ${
+        movie.poster_path
+          ? `<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" class="card-img-top">`
+          : `<img src="images/no-image.jpg" alt="${movie.title}" class="card-img-top">`
+      }
+      </div>
+      <div>
+        <h2>${movie.title}</h2>
+        <p>
+          <i class="fas fa-star text-primary"></i>
+          ${movie.vote_average.toFixed(1)} / 10
+        </p>
+        <p class="text-muted">Release Date: ${movie.release_date}</p>
+        <p>
+          ${movie.overview}
+        </p>
+        <h5>Genres</h5>
+        <ul class="list-group">
+        ${movie.genres.map((genre) => `<li>${genre.name}</li>`).join('')}
+        </ul>
+        ${
+          movie.homepage
+            ? `<a
+            href="${movie.homepage}"
+            target="_blank"
+      class="btn">Visit Movie Homepage</a>`
+            : null
+        }
+      </div>
+    </div>
+    <div class="details-bottom">
+      <h2>Movie Info</h2>
+      <ul>
+        <li><span class="text-secondary">Budget:</span> $${addCommasToNumber(
+          movie.budget
+        )}</li>
+        <li><span class="text-secondary">Revenue:</span> $${addCommasToNumber(
+          movie.revenue
+        )}</li>
+        <li><span class="text-secondary">Runtime:</span> ${
+          movie.runtime
+        } minutes</li>
+        <li><span class="text-secondary">Status:</span> ${movie.status}</li>
+      </ul>
+      <h4>Production Companies</h4>
+      <div class="list-group">${movie.production_companies
+        .map((company) => `<span>${company.name}</span>`)
+        .join(', ')}</div>
+    </div>
+  `
+  document.querySelector('#movie-details').appendChild(div)
+}
+
+const addCommasToNumber = (number) => {
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }
 
 // Fetch data from TMDB API
@@ -61,7 +129,7 @@ const fetchAPIData = async (endpoint) => {
     `${API_URL}${endpoint}?api_key=${API_KEY}&language=en-US`
   )
   const data = await res.json()
-  console.log(data)
+
   hideSpinner()
   return data
 }
@@ -93,6 +161,7 @@ function init() {
       break
     case '/movie-details.html':
       console.log('details: movie')
+      displayMovieDetails()
       break
     case '/search.html':
       console.log('search')
