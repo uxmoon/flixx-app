@@ -6,6 +6,7 @@ const global = {
     term: '',
     page: 1,
     totalPages: 1,
+    totalResults: 0,
   },
   api: {
     apiKey: 'f2ea09585c04240200255b651d9f228b',
@@ -255,7 +256,7 @@ const displayBackgroundImage = (type, imagePath) => {
   }
 }
 
-// Search movie/shows
+// Search movie and shows
 const search = async () => {
   const queryString = window.location.search
   const urlParams = new URLSearchParams(queryString)
@@ -264,8 +265,11 @@ const search = async () => {
   global.search.term = urlParams.get('search-term')
 
   if (global.search.term !== '' && global.search.term !== null) {
-    const { results } = await searchAPIData()
-    console.log(results)
+    const { results, total_results, total_pages, page } = await searchAPIData()
+    console.log(results, total_results, total_pages, page)
+    global.search.totalResults = total_results
+    global.search.totalPages = total_pages
+    global.search.page = page
     if (results.length === 0) {
       showAlert('No results found.')
       return
@@ -303,6 +307,12 @@ const displayResults = (results) => {
             : result.first_air_date
         }</p>
       </div>
+    `
+    document.querySelector('#search-results-heading').innerHTML = `
+      <h2>
+        ${results.length} of ${global.search.totalResults}
+        results for ${global.search.term}
+      </h2>
     `
     document.getElementById('search-results').appendChild(div)
   })
