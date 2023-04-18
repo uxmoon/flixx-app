@@ -1,6 +1,16 @@
 // Add global state
 const global = {
   currentPage: window.location.pathname,
+  search: {
+    type: '',
+    term: '',
+    page: 1,
+    totalPages: 1,
+  },
+  api: {
+    apiKey: 'f2ea09585c04240200255b651d9f228b',
+    apiUrl: 'https://api.themoviedb.org/3/',
+  },
 }
 
 // Fetch and display popular movies
@@ -186,12 +196,28 @@ const addCommasToNumber = (number) => {
 
 // Fetch data from TMDB API
 const fetchAPIData = async (endpoint) => {
-  const API_KEY = 'f2ea09585c04240200255b651d9f228b'
-  const API_URL = 'https://api.themoviedb.org/3/'
+  const API_KEY = global.api.apiKey
+  const API_URL = global.api.apiUrl
 
   showSpinner()
   const res = await fetch(
     `${API_URL}${endpoint}?api_key=${API_KEY}&language=en-US`
+  )
+  const data = await res.json()
+
+  hideSpinner()
+  return data
+}
+
+// Make request to search
+// Fetch data from TMDB API
+const searchAPIData = async () => {
+  const API_KEY = global.api.apiKey
+  const API_URL = global.api.apiUrl
+
+  showSpinner()
+  const res = await fetch(
+    `${API_URL}search/${global.search.type}?api_key=${API_KEY}&language=en-US&query=${global.search.term}`
   )
   const data = await res.json()
 
@@ -229,6 +255,33 @@ const displayBackgroundImage = (type, imagePath) => {
   }
 }
 
+// Search movie/shows
+const search = async () => {
+  const queryString = window.location.search
+  const urlParams = new URLSearchParams(queryString)
+
+  global.search.type = urlParams.get('type')
+  global.search.term = urlParams.get('search-term')
+
+  if (global.search.term !== '' && global.search.term !== null) {
+    const results = await searchAPIData()
+    console.log(results)
+  } else {
+    showAlert('Please enter a search term', 'error')
+  }
+}
+
+// Form validation
+const showAlert = (message, className) => {
+  const div = document.createElement('div')
+  const text = document.createTextNode(message)
+  div.classList.add('alert', className)
+  div.appendChild(text)
+  document.querySelector('#alert').appendChild(div)
+  setTimeout(() => div.remove(), 2000)
+}
+
+// Display slider movies on homepage
 const displaySlider = async () => {
   const { results } = await fetchAPIData('movie/now_playing')
   results.forEach((movie) => {
@@ -281,7 +334,7 @@ function init() {
       displayMovieDetails()
       break
     case '/search.html':
-      console.log('search')
+      search()
       break
     case '/shows.html':
       displayPopularShows()
