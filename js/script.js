@@ -264,21 +264,58 @@ const search = async () => {
   global.search.term = urlParams.get('search-term')
 
   if (global.search.term !== '' && global.search.term !== null) {
-    const results = await searchAPIData()
+    const { results } = await searchAPIData()
     console.log(results)
+    if (results.length === 0) {
+      showAlert('No results found.')
+      return
+    }
+    displayResults(results)
   } else {
-    showAlert('Please enter a search term', 'error')
+    showAlert('Please enter a search term.')
   }
 }
 
+// Display search results
+const displayResults = (results) => {
+  results.forEach((result) => {
+    const div = document.createElement('div')
+    div.classList.add('card')
+    div.innerHTML = `
+      <a href="${global.search.type}-details.html?id=${result.id}">
+      ${
+        result.poster_path
+          ? `<img src="https://image.tmdb.org/t/p/w500${
+              result.poster_path
+            }" alt="${
+              global.search.type === 'movie' ? result.title : result.name
+            }">`
+          : `<img src="images/no-image.jpg" alt="${
+              global.search.type === 'movie' ? result.title : result.name
+            }">`
+      }
+      </a>
+      <div class="card-body">
+        <h3>${global.search.type === 'movie' ? result.title : result.name}</h3>
+        <p>Release date: ${
+          global.search.type === 'movie'
+            ? result.release_date
+            : result.first_air_date
+        }</p>
+      </div>
+    `
+    document.getElementById('search-results').appendChild(div)
+  })
+}
+
 // Form validation
-const showAlert = (message, className) => {
+const showAlert = (message, className = 'error') => {
   const div = document.createElement('div')
   const text = document.createTextNode(message)
   div.classList.add('alert', className)
   div.appendChild(text)
   document.querySelector('#alert').appendChild(div)
-  setTimeout(() => div.remove(), 2000)
+  setTimeout(() => div.remove(), 4000)
 }
 
 // Display slider movies on homepage
