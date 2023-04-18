@@ -19,11 +19,37 @@
   </head>
   <body>
     <header>
-      <p><a href="/">Flixx App</a></p>
-      <nav>
-        <a href="/">Movies</a>
-        <a href="/shows.html">Shows</a>
-      </nav>
+      <div class="container">
+        <h1><a href="/">Flixx App</a></h1>
+        <nav>
+          <a href="/">Movies</a>
+          <a href="/shows.html">Shows</a>
+        </nav>
+      </div>
     </header>
+    <main>
+      <h1>Search results</h1>
+      <section class="container">
+        <form action="/search.html">
+          <div>
+            <input type="radio" name="type" id="movies" value="movie" checked />
+            <label for="movies">Movies</label>
+            <input type="radio" name="type" id="shows" value="tv" />
+            <label for="shows">TV Shows</label>
+          </div>
+          <div>
+            <input
+              type="text"
+              name="search-term"
+              id="s"
+              placeholder="Enter search term"
+            />
+            <button type="submit">Search <i class="fas fa-search"></i></button>
+          </div>
+          <div id="alert"></div>
+        </form>
+      </section>
+    </main>
+    <div id="loading" class="spinner"></div>
   </body>
 </html>
