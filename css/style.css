@@ -79,7 +79,8 @@ header p {
   text-transform: uppercase;
 }
 
-main > h1 {
+main > h1,
+section > h2 {
   text-align: center;
 }
 
@@ -174,4 +175,8 @@ main > h1 {
 .error {
   background-color: #f8d7da;
   border-color: #f1aeb5;
+}
+
+button:disabled {
+  cursor: not-allowed;
 }
