@@ -218,7 +218,7 @@ const searchAPIData = async () => {
 
   showSpinner()
   const res = await fetch(
-    `${API_URL}search/${global.search.type}?api_key=${API_KEY}&language=en-US&query=${global.search.term}`
+    `${API_URL}search/${global.search.type}?api_key=${API_KEY}&language=en-US&query=${global.search.term}&page=${global.search.page}`
   )
   const data = await res.json()
 
@@ -282,6 +282,11 @@ const search = async () => {
 
 // Display search results
 const displayResults = (results) => {
+  // Clear previous results
+  document.querySelector('#search-results').innerHTML = ''
+  document.querySelector('#search-results-heading').innerHTML = ''
+  document.querySelector('#pagination').innerHTML = ''
+
   results.forEach((result) => {
     const div = document.createElement('div')
     div.classList.add('card')
@@ -316,6 +321,43 @@ const displayResults = (results) => {
     `
     document.getElementById('search-results').appendChild(div)
   })
+  displayPagination(results)
+}
+
+// Pagination
+const displayPagination = (results) => {
+  const div = document.createElement('div')
+  div.classList.add('pagination')
+  div.innerHTML = `
+    <button id="pagination-prev">Previous</button>
+    <button id="pagination-next">Next</button>
+    <p class="pagination-counter">Page ${global.search.page} of ${global.search.totalPages}</p>
+  `
+  document.querySelector('#pagination').appendChild(div)
+  // disable buttons based on page number
+  if (global.search.page === 1) {
+    document.querySelector('#pagination-prev').disabled = true
+  }
+  if (global.search.page === global.search.totalPages) {
+    document.querySelector('#pagination-next').disabled = true
+  }
+
+  // Go to page
+  document
+    .querySelector('#pagination-next')
+    .addEventListener('click', async () => {
+      global.search.page++
+      const { results } = await searchAPIData()
+      displayResults(results)
+    })
+
+  document
+    .querySelector('#pagination-prev')
+    .addEventListener('click', async () => {
+      global.search.page--
+      const { results } = await searchAPIData()
+      displayResults(results)
+    })
 }
 
 // Form validation
