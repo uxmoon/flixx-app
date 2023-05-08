@@ -1,5 +1,6 @@
 :root {
-  --color-black: #202020;
+  --color-black: #212529;
+  --color-black-light: #2b3035;
   --color-white: #ffffff;
 }
 
@@ -76,6 +77,45 @@ select {
     scroll-behavior: auto !important;
   }
 }
+body {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+body {
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+}
+
+.container {
+  max-width: 80rem;
+  margin-inline: auto;
+  padding: 0 1rem;
+}
+
+.auto-grid {
+  --auto-grid-min-size: 16rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--auto-grid-min-size), 1fr));
+  grid-gap: 1rem;
+}
+
+.footer {
+  background-color: var(--color-black-light);
+  color: var(--color-white);
+  padding: 5rem 0;
+}
+.footer a {
+  color: var(--color-white);
+}
+
+.footer__logo {
+  text-align: center;
+}
+
+.footer__links {
+  text-align: center;
+}
+
 button {
   background-color: #000;
   color: #fff;
