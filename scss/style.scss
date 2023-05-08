@@ -1,7 +1,3 @@
-@forward 'base/reset';
-body {
-  background-color: #afa;
-  p {
-    color: #f00;
-  }
-}
+@import 'base/colors';
+@import 'base/reset';
+@import 'components/button';
