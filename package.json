@@ -7,7 +7,9 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:sass": "sass  --no-source-map scss:css",
+    "watch:sass": "sass  --no-source-map --watch scss:css",
+    "postbuild": "postcss css/main.css -u autoprefixer cssnano -r --no-map"
   },
   "repository": {
     "type": "git",
@@ -21,6 +23,9 @@
   },
   "homepage": "https://github.com/uxmoon/flixx-app#readme",
   "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "cssnano": "^6.0.1",
+    "postcss-cli": "^10.1.0",
     "sass": "^1.62.0"
   }
 }
