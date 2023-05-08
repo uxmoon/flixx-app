@@ -1,0 +1,17 @@
+.footer {
+  background-color: var(--color-black-light);
+  color: var(--color-white);
+  padding: 5rem 0;
+
+  a {
+    color: var(--color-white);
+  }
+}
+
+.footer__logo {
+  text-align: center;
+}
+
+.footer__links {
+  text-align: center;
+}
