@@ -86,19 +86,6 @@ body {
   font-family: "Poppins", Arial, Helvetica, sans-serif;
 }
 
-.container {
-  max-width: 80rem;
-  margin-inline: auto;
-  padding: 0 1rem;
-}
-
-.auto-grid {
-  --auto-grid-min-size: 16rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(var(--auto-grid-min-size), 1fr));
-  grid-gap: 1rem;
-}
-
 .footer {
   background-color: var(--color-black-light);
   color: var(--color-white);
@@ -114,9 +101,23 @@ body {
 
 .footer__links {
   text-align: center;
+  font-size: 0.875rem;
+}
+
+.container {
+  max-width: 80rem;
+  margin-inline: auto;
+  padding: 0 1rem;
+}
+
+.auto-grid {
+  --auto-grid-min-size: 16rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--auto-grid-min-size), 1fr));
+  grid-gap: 1rem;
 }
 
 button {
-  background-color: #000;
-  color: #fff;
+  background-color: var(--color-white);
+  color: var(--color-black);
 }
