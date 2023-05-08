@@ -7,8 +7,8 @@
     "lib": "lib"
   },
   "scripts": {
-    "build:sass": "sass  --no-source-map scss:css",
-    "watch:sass": "sass  --no-source-map --watch scss:css",
+    "build:sass": "sass  --no-source-map scss/style.scss css/style.css",
+    "watch:sass": "sass  --no-source-map --watch scss/style.scss css/style.css",
     "postbuild": "postcss css/main.css -u autoprefixer cssnano -r --no-map"
   },
   "repository": {
