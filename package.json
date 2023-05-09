@@ -9,7 +9,8 @@
   "scripts": {
     "build:sass": "sass  --no-source-map scss/**/*.scss css/style.css",
     "watch:sass": "sass  --no-source-map --watch scss/style.scss css/style.css",
-    "postbuild": "postcss css/main.css -u autoprefixer cssnano -r --no-map"
+    "postbuild": "postcss css/main.css -u autoprefixer cssnano -r --no-map",
+    "dev": "npm run watch:sass & live-server --ignore='node_modules,images,lib,readme.md,css,.git,*.son'"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.14",
     "cssnano": "^6.0.1",
+    "live-server": "^1.2.2",
     "postcss-cli": "^10.1.0",
     "sass": "^1.62.0"
   }
