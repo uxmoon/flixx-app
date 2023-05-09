@@ -1,8 +1,14 @@
 @use '../mixins';
+
+.header {
+  padding: 0.5rem 0;
+  background-color: var(--color-accent);
+}
+
 .header__container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 2rem;
   padding: 0.5rem 1rem;
   @extend %container;
   a {
@@ -17,8 +23,5 @@
 .header__nav {
   display: flex;
   gap: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.125rem;
   font-size: mixins.rem(18);
 }

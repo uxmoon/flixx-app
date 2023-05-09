@@ -2,6 +2,8 @@
   --color-black: #212529;
   --color-black-light: #2b3035;
   --color-white: #ffffff;
+  --color-accent: #5a4af4;
+  --color-primary: #27a5fc;
 }
 
 /* Box sizing rules */
@@ -99,10 +101,15 @@ a:hover, a:focus {
   padding: 0 1rem;
 }
 
+.header {
+  padding: 0.5rem 0;
+  background-color: var(--color-accent);
+}
+
 .header__container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 2rem;
   padding: 0.5rem 1rem;
 }
 .header__container a {
@@ -116,9 +123,6 @@ a:hover, a:focus {
 .header__nav {
   display: flex;
   gap: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.125rem;
   font-size: 1.125rem;
 }
 
@@ -154,6 +158,6 @@ a:hover, a:focus {
 }
 
 button {
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-primary);
+  color: var(--color-white);
 }
