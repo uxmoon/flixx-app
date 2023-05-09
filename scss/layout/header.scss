@@ -1,0 +1,24 @@
+@use '../mixins';
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  @extend %container;
+  a {
+    color: var(--color-white);
+  }
+}
+
+.header__logo {
+  font-size: mixins.rem(24);
+}
+
+.header__nav {
+  display: flex;
+  gap: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.125rem;
+  font-size: mixins.rem(18);
+}
