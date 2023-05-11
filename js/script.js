@@ -70,6 +70,7 @@ const displayMovieDetails = async () => {
   displayBackgroundImage('movie', movie.backdrop_path)
 
   const div = document.createElement('div')
+  div.classList.add('details')
   div.innerHTML = `
     <div class="details-top">
       <div>
@@ -94,12 +95,11 @@ const displayMovieDetails = async () => {
         ${movie.genres.map((genre) => `<li>${genre.name}</li>`).join('')}
         </ul>
         ${
-          movie.homepage
-            ? `<a
+          movie.homepage &&
+          `<a
             href="${movie.homepage}"
             target="_blank"
-      class="btn">Visit Movie Homepage</a>`
-            : null
+            class="btn btn-secondary">Visit Movie Homepage</a>`
         }
       </div>
     </div>
