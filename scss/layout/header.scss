@@ -1,4 +1,4 @@
-@use '../mixins';
+@use '../mixins' as util;
 
 .header {
   padding: 0.5rem 0;
@@ -17,11 +17,21 @@
 }
 
 .header__logo {
-  font-size: mixins.rem(24);
+  font-size: util.rem(24);
+  font-weight: 700;
+  letter-spacing: util.rem(2);
+
+  a {
+    &,
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+  }
 }
 
 .header__nav {
   display: flex;
   gap: 0.75rem;
-  font-size: mixins.rem(18);
+  font-size: util.rem(18);
 }

@@ -1,4 +1,4 @@
-@use '../mixins';
+@use '../mixins' as util;
 
 .footer {
   background-color: var(--color-black-light);
@@ -16,5 +16,5 @@
 
 .footer__links {
   text-align: center;
-  font-size: mixins.rem(14);
+  font-size: util.rem(14);
 }

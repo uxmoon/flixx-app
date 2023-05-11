@@ -1,10 +1,11 @@
+@use '../mixins/index' as util;
 .btn {
   background-color: var(--color-black);
   border-color: var(--color-black);
   color: var(--color-white);
   border-width: 1px;
   border-style: solid;
-  padding: 0.75rem 1rem;
+  padding: util.rem(6) 1rem;
   border-radius: 0.25rem;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
@@ -20,7 +21,7 @@ button {
 }
 
 .btn-primary {
-  background-color: var(--color-primary);
+  background-color: var(--color-accent);
 
   &:hover,
   &:focus {
@@ -29,13 +30,13 @@ button {
 }
 
 .btn-secondary {
-  background-color: transparent;
-  border-color: var(--color-white);
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
 
   &:hover,
   &:focus {
-    background-color: var(--color-accent);
-    border-color: var(--color-accent);
+    background-color: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
   }
 }
 
@@ -45,6 +46,6 @@ button {
 
   &:hover,
   &:focus {
-    background-color: var(--color-black-light);
+    background-color: var(--color-black-hover);
   }
 }
