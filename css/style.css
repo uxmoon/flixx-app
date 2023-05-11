@@ -95,6 +95,19 @@ a:hover, a:focus {
   text-decoration: underline;
 }
 
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+section > h2 {
+  text-align: center;
+}
+
 .header__container {
   max-width: 80rem;
   margin-inline: auto;
@@ -157,7 +170,45 @@ a:hover, a:focus {
   grid-gap: 1rem;
 }
 
-button {
-  background-color: var(--color-primary);
+.btn, button {
+  background-color: var(--color-black);
+  border-color: var(--color-black);
   color: var(--color-white);
+  border-width: 1px;
+  border-style: solid;
+  padding: 0.75rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+.btn:hover, button:hover, .btn:focus, button:focus {
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+}
+.btn-primary:hover, .btn-primary:focus {
+  filter: brightness(120%);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border-color: var(--color-white);
+}
+.btn-secondary:hover, .btn-secondary:focus {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.btn-text {
+  background-color: transparent;
+  border-color: transparent;
+}
+.btn-text:hover, .btn-text:focus {
+  background-color: var(--color-black-light);
+}
+
+.breadcrumb {
+  padding: 1.5rem 0;
 }
